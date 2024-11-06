@@ -1,0 +1,37 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.hexagonal'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web' // Para REST
+	implementation 'org.projectlombok:lombok' // Para usar Lombok
+	runtimeOnly 'com.h2database:h2' // Base de datos en memoria H2
+	annotationProcessor 'org.projectlombok:lombok' // Procesador de anotaciones para Lombok
+
+	// Dependencias para pruebas
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Para pruebas con Spring
+	testImplementation 'org.mockito:mockito-core:5.2.0' // Agrega Mockito
+	testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0' // Integración de Mockito con JUnit 5
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // Para lanzar pruebas con JUnit
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
