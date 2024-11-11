@@ -1,19 +1,22 @@
-package com.hexagonal.product_finder.infrastructure.adapters.input.mapper.response.impl;
+package com.hexagonal.product_finder.infrastructure.adapters.output.mapper.entityToModel.impl;
+
 
 
 import com.hexagonal.product_finder.domain.model.Price;
-import com.hexagonal.product_finder.infrastructure.adapters.input.mapper.response.PriceResponseMapper;
-import com.hexagonal.product_finder.infrastructure.dto.PriceDto;
+import com.hexagonal.product_finder.infrastructure.adapters.output.mapper.entityToModel.EntityToModel;
+import com.hexagonal.product_finder.infrastructure.entity.PriceEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Optional;
 
 @Component
-public class PriceResponseMapperImpl implements PriceResponseMapper {
+public class EntityToModelImpl implements EntityToModel {
+
+
     @Override
-    public PriceDto map(Price source, Optional<Map<String, Object>> mappingContext) {
-        return PriceDto.builder()
+    public Price map(PriceEntity source, Optional<Map<String, Object>> mappingContext) {
+        return Price.builder()
                 .brandId(source.getBrandId())
                 .productId(source.getProductId())
                 .priceList(source.getPriceList())
