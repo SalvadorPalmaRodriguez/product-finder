@@ -30,6 +30,10 @@ Para ejecutar la aplicación, utiliza el comando:
 
 
 Una vez iniciada, puedes acceder a los endpoints de la API para buscar y gestionar precios de productos. Aquí hay un ejemplo de cómo hacer una petición de búsqueda de precios:
+
+```
+curl -X GET "http://localhost:8080/api/prices/price?brandId=1&productId=35455&applicationDate=2020-06-14T10:00:00"
+```
 ```
 curl -X GET "http://localhost:8080/api/prices/price?brandId=1&productId=1&applicationDate=2023-11-05T14:00:00"
 ```
