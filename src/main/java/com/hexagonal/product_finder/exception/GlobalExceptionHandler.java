@@ -1,11 +1,9 @@
 package com.hexagonal.product_finder.exception;
 
 import com.hexagonal.product_finder.domain.exception.PriceNotFoundException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

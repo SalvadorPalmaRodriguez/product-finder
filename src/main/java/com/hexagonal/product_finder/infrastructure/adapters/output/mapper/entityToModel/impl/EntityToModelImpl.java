@@ -1,7 +1,5 @@
 package com.hexagonal.product_finder.infrastructure.adapters.output.mapper.entityToModel.impl;
 
-
-
 import com.hexagonal.product_finder.domain.model.Price;
 import com.hexagonal.product_finder.infrastructure.adapters.output.mapper.entityToModel.EntityToModel;
 import com.hexagonal.product_finder.infrastructure.entity.PriceEntity;

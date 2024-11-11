@@ -1,6 +1,5 @@
 package com.hexagonal.product_finder.infrastructure.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

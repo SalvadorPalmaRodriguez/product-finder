@@ -1,6 +1,5 @@
 package com.hexagonal.product_finder.infrastructure.adapters.output;
 
-import com.hexagonal.product_finder.domain.model.Price;
 import com.hexagonal.product_finder.infrastructure.entity.PriceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

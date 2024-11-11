@@ -1,6 +1,5 @@
 package com.hexagonal.product_finder.infrastructure.adapters.output;
 
-
 import com.hexagonal.product_finder.application.port.output.PriceRepositoryPort;
 import com.hexagonal.product_finder.domain.model.Price;
 import com.hexagonal.product_finder.infrastructure.adapters.output.mapper.entityToModel.EntityToModel;
@@ -34,6 +33,5 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
                 .map(priceEntity -> entityToModel.map(priceEntity, Optional.empty()))
                 .collect(Collectors.toList());
     }
-
 
 }

@@ -1,6 +1,5 @@
 package com.hexagonal.product_finder.infrastructure.adapters.input.mapper.response.impl;
 
-
 import com.hexagonal.product_finder.domain.model.Price;
 import com.hexagonal.product_finder.infrastructure.adapters.input.mapper.response.PriceResponseMapper;
 import com.hexagonal.product_finder.infrastructure.dto.PriceDto;
