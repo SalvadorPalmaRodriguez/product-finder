@@ -26,13 +26,20 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok' // Procesador de anotaciones para Lombok
 
 	// Dependencias para pruebas
-	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Para pruebas con Spring
-	testImplementation 'org.mockito:mockito-core:5.2.0' // Agrega Mockito
-	testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0' // Integración de Mockito con JUnit 5
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // Para lanzar pruebas con JUnit
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.1'
+	testImplementation 'org.mockito:mockito-core:5.3.1'
+	testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 }
 
 
 tasks.named('test') {
 	useJUnitPlatform()
+	jvmArgs = ['-Djdk.instrument.traceUsage', '-XX:+EnableDynamicAgentLoading']
+}
+
+// Configuración de Spring Boot para ejecutar la aplicación
+bootRun {
+	mainClass = 'com.hexagonal.product_finder.ProductFinderApplication'
 }

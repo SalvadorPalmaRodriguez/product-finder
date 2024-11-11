@@ -38,10 +38,10 @@ public class PriceControllerIntegrationTest {
         mockMvc.perform(get("/api/prices/price")
                         .param("brandId", "1")
                         .param("productId", "35455")
-                        .param("applicationDate", "2020-06-14T15:00:00")
+                        .param("applicationDate", "2020-06-14T10:00:00")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.price").value("25.45"));
+                .andExpect(jsonPath("$.price").value("35.5"));
     }
 
     @Test
@@ -53,6 +53,7 @@ public class PriceControllerIntegrationTest {
                         .param("applicationDate", "2020-06-15T00:00:00")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("Price not found for the provided parameters."));
+                .andExpect(jsonPath("$.error").value("Not Found")) // Verifica que el campo "error" sea "Bad Request"
+                .andExpect(jsonPath("$.message").value("Price not found for the provided parameters.")); // Verifica el campo "message"
     }
 }

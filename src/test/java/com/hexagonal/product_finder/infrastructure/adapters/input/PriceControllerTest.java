@@ -217,7 +217,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                             .param("applicationDate", "2020-06-14T10:00:00")
                             .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isNotFound()) // Espera un estado 404
-                    .andExpect(content().string("Price not found for the provided parameters.")); // Espera el mensaje correcto
+                    .andExpect(jsonPath("$.error").value("Not Found")) // Verifica el campo "error"
+                    .andExpect(jsonPath("$.message").value("Price not found for the provided parameters.")); // Verifica el campo "message"
         }
 
 
@@ -227,8 +228,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
             mockMvc.perform(get("/api/prices/price")
                             .param("brandId", "1")
                             .param("productId", "35455")) // Falta applicationDate para lanzar MissingServletRequestParameterException
-                    .andExpect(status().isBadRequest())
-                    .andExpect(content().string("Invalid or missing request parameters. Please check your request."));
+                    .andExpect(status().isBadRequest()) // Verifica que el estado sea 400
+                    .andExpect(jsonPath("$.error").value("Bad Request")) // Verifica que el campo "error" sea "Bad Request"
+                    .andExpect(jsonPath("$.message").value("Invalid or missing request parameters. Please check your request.")); // Verifica el campo "message"
         }
 
         // Prueba para 500 - Internal Server Error
@@ -243,7 +245,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                             .param("productId", "35455")
                             .param("applicationDate", "2020-06-14T10:00:00"))
                     .andExpect(status().isInternalServerError())
-                    .andExpect(content().string("An unexpected error occurred. Please try again later."));
+                    .andExpect(jsonPath("$.error").value("Internal Server Error")) // Verifica que el campo "error" sea "Internal Server Error"
+                    .andExpect(jsonPath("$.message").value("An unexpected error occurred. Please try again later.")); // Verifica el mensaje en "message"
         }
 
     }
